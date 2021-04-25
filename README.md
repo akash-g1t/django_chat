@@ -1,4 +1,10 @@
-## Understand about Web Socket
-https://youtu.be/iDVlcg7APUs
-## Introduction to django chhanels and basic integration
-https://youtu.be/Vks_Rpu0LH8
+Custom Authentication Middleware for consumers:-
+
+
+from channels.middleware import BaseMiddleware
+
+class TokenAuthMiddleware(BaseMiddleware):
+
+    async def __call__(self, scope, receive, send):
+        scope['user'] = await get_user(scope)
+        return await super().__call__(scope, receive, send)
